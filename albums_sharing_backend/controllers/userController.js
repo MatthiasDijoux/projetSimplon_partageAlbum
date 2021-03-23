@@ -2,10 +2,13 @@ const db = require("../models");
 const User = db.user;
 const bcrypt = require('bcrypt');
 const Op = db.Sequelize.Op;
+const {sendMail} = require('../utils/MailHandler/SendMail')
+
+require('dotenv').config();
 
 var jwt = require("jsonwebtoken");
 
-const SECRET = "vidme-secret"
+const SECRET = process.env.JWT_SECRET
 
 // Create and Save a new User
 exports.create = async (req, res) => {
@@ -37,6 +40,12 @@ exports.create = async (req, res) => {
         email: data.email
       }, SECRET, { expiresIn: '3 hours' })
     
+      const dataToSend = {nom: user.nom, prenom: user.prenom, token}
+      const recipient = user.email
+      const links = {confirmLink: `/login?token=${token}`}
+      const mailType = 'confirmMail'
+      sendMail(dataToSend, recipient, links, mailType)
+
       return res.json({ id: user.id, email: user.email, accessToken: token })
     })
     .catch(err => {
