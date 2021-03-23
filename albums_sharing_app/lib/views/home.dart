@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './login.dart';
+import 'galleries.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -8,16 +9,31 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: ElevatedButton(
-          child: Text('Page connexion'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return LoginScreen();
-              }),
-            );
-          },
+        child: Column(
+          children: [
+            ElevatedButton(
+              child: Text('Page connexion'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return LoginScreen();
+                  }),
+                );
+              },
+            ),
+            ElevatedButton(
+              child: Text('Gallerie'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return GalleriesScreen();
+                  }),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
