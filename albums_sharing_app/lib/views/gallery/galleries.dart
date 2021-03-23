@@ -8,12 +8,10 @@ class GalleriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: SingleChildScrollView(
-            child: (Column(
-          children: [_buildCard(context)],
-        ))),
-      ),
+      body: SingleChildScrollView(
+          child: (Column(
+        children: [_buildCard(context)],
+      ))),
     );
   }
 }
