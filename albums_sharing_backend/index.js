@@ -12,6 +12,9 @@
  const cors = require('cors');
  const models = require('./models');
  const http = require('http');
+ const path = require('path');
+ const {checkTokenMiddleware} = require("./middlewares/authMiddlewares")
+ let router = express.Router();
  /* Make all variables from our .env file available in our process */
  require('dotenv').config();
  
@@ -24,14 +27,17 @@
  app.use(bodyParser.urlencoded({ extended: false }));
  app.use(bodyParser.json());
  
- /* Here we define the api routes */
- app.use(require('./routes'));
- const port = process.env.PORT || 3000;
- const address = process.env.SERVER_ADDRESS || '127.0.0.1';
+/*** Serve pictures in protected route ***/
+app.use('/files', [checkTokenMiddleware, express.static(path.join(__dirname + '/assets'))])
+
+ /* Here we define the api routes */    
+app.use(require('./routes'));
+const port = process.env.API_PORT || 3000;
+const address = process.env.API_ADDRESS || '127.0.0.1';
  
- var server = http.createServer(app);
- const servListen = server.listen(port);
- 
+let server = http.createServer(app);
+const servListen = server.listen(port, console.log("API listen on port : "+port));
+
  /* Create everything automatically with sequelize ORM */
  models.sequelize.sync().then(function () {
  
