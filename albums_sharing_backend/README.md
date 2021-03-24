@@ -27,9 +27,16 @@ ou
 ### Configuration
 Créér un fichier ***.env*** à la racine du projet en suivant le modèle de ***.env.exemple***
 
-### Lancement de l'application
+### Lancement du serveur
 ```yarn start```
 
 ou 
 
 ```npm start```
+### Lancement du serveur avec nodemon
+```yarn run dev```
+```yarn run dev```
+
+ou 
+
+```npm run dev```
