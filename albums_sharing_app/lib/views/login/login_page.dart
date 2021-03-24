@@ -14,21 +14,27 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isLoading = false;
   var errorMsg;
-  final TextEditingController mobileController = new TextEditingController();
+  final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.all(16.0),
         child: _isLoading
             ? Center(child: CircularProgressIndicator())
             : ListView(
                 children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(left: 30, top:10, right: 20, bottom:40) ,
+                    child:
+                     Text("Se connecter", style: TextStyle(color: Colors.black, fontSize: 30)),
+                  ),
                   TextFormField(
-                    controller: mobileController,
+                    controller: emailController,
                     decoration: InputDecoration(
-                      hintText: "Phone No",
+                      hintText: "Email",
                     ),
                   ),
                   SizedBox(height: 30.0),
@@ -36,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      hintText: "Password",
+                      hintText: "Mot de passe",
                     ),
                   ),
                   FlatButton(
@@ -45,10 +51,10 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         _isLoading = true;
                       });
-                      signIn(mobileController.text, passwordController.text);
+                      signIn(emailController.text, passwordController.text);
                     },
                     child:
-                        Text("Sign In", style: TextStyle(color: Colors.black)),
+                        Text("Se connecter", style: TextStyle(color: Colors.black)),
                   ),
                   errorMsg == null
                       ? Container()
@@ -63,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   Text(
-                    'Not have an account? Create one,,,',
+                    'Pas encore de compte ?',
                     style: TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 15,
@@ -78,8 +84,8 @@ class _LoginPageState extends State<LoginPage> {
                           (Route<dynamic> route) => false);
                     },
                     elevation: 0.0,
-                    color: Colors.purple,
-                    child: Text("Register",
+                    color: Colors.blue,
+                    child: Text("S'inscrire",
                         style: TextStyle(color: Colors.white70)),
                   ),
                 ],
