@@ -19,7 +19,7 @@ exports.templateSelection = (data, mailType, objLinks)=>{
                 subject = "Confirmation d'email"
                 attachments = attachementsConfirmMail(data)
                 selectedTemplate = "/template/templateConfirmMail.ejs"
-                links = {confirmLink: urlLinkPrefix+objLinks?.confirmLink}
+                links = {confirmLink: urlLinkPrefix+objLinks.confirmLink}
             }
             break;       
         case 'resetPassword':
@@ -27,7 +27,7 @@ exports.templateSelection = (data, mailType, objLinks)=>{
                 subject = "Réinitialisation de mots de passe"
                 attachments = attachementsResetPassword(data)
                 selectedTemplate = "/template/templateResetPassword.ejs"
-                links = {resetBtnLink: urlLinkPrefix+objLinks?.resetBtnLink}
+                links = {resetBtnLink: urlLinkPrefix+objLinks.resetBtnLink}
             }
             break;        
         case 'passwordUpdated':
@@ -35,7 +35,7 @@ exports.templateSelection = (data, mailType, objLinks)=>{
                 subject = "Mots de passe mise à jour"
                 attachments = attachementsPasswordUpdated(data)
                 selectedTemplate = "/template/templatePasswordUpdated.ejs"
-                links = {loginLink: urlLinkPrefix+objLinks?.loginLink}
+                links = {loginLink: urlLinkPrefix+objLinks.loginLink}
             }
             break;
         default:
