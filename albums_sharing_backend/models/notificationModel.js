@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("notifications", {
+    const Notification = sequelize.define("notifications", {
       opened: {
         type: Sequelize.STRING,
         allowNull: false
@@ -10,5 +10,5 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       },
     });
-    return User;
+    return Notification;
   };

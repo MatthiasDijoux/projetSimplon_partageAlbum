@@ -1,13 +1,11 @@
 let express = require('express');
 let router = express.Router();
-const bcrypt = require('bcrypt');
-const uuid = require('uuid');
-const jwt = require('jsonwebtoken');
 const userController = require("../../controllers/userController.js");
 const authController = require("../../controllers/authControler");
-const { checkTokenMiddleware, extractBearerToken } = require("../../middlewares/authMiddlewares")
-const { checkDuplicateEmail } = require('../../middlewares/verifSignup')
 const albumController = require("../../controllers/albumController.js");
+const {checkTokenMiddleware} = require("../../middlewares/authMiddlewares")
+const {checkDuplicateEmail} = require('../../middlewares/verifSignup')
+
 /* Formulaire de connexion */
 router.post('/login', authController.login)
 /*  Inscription */

@@ -43,6 +43,6 @@ exports.login = async (req, res) => {
       id: user.id,
       email: user.email
   }, SECRET, { expiresIn: '3 hours' })
-
+  
   return res.json({ id: user.id, email: user.email, accessToken: token })
 };
