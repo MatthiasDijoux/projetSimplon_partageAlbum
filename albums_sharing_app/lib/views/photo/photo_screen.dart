@@ -1,5 +1,5 @@
 import 'package:albums_sharing_app/views/home.dart';
-import 'package:albums_sharing_app/views/photo_fullscreen.dart';
+import 'file:///C:/src/projet-flutter/projetSimplon_partageAlbum/albums_sharing_app/lib/views/Photo/photo_fullscreen.dart';
 import 'package:flutter/material.dart';
 
 class PhotoScreen extends StatelessWidget {

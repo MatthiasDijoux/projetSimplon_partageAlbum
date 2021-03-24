@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'Photo/test_pagination.dart';
 import 'login/login.dart';
 import 'gallery/galleries.dart';
-import './photo_screen.dart';
+import 'Photo/photo_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -41,6 +42,17 @@ class HomeScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) {
                     return PhotoScreen();
+                  }),
+                );
+              },
+            ),
+            ElevatedButton(
+              child: Text('Page test'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return TestPaginationScreen();
                   }),
                 );
               },

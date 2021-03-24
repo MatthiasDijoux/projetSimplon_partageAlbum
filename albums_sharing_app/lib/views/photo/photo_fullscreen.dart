@@ -1,7 +1,8 @@
-import 'package:albums_sharing_app/views/photo_screen.dart';
+import 'file:///C:/src/projet-flutter/projetSimplon_partageAlbum/albums_sharing_app/lib/views/Photo/photo_screen.dart';
 import 'package:flutter/material.dart';
 
 class PhotoFullScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
