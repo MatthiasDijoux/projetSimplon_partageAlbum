@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("photos", {
+    const Photo = sequelize.define("photos", {
       nom: {
         type: Sequelize.STRING,
         allowNull: false
@@ -10,5 +10,5 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       }
     });
-    return User;
+    return Photo;
   };
