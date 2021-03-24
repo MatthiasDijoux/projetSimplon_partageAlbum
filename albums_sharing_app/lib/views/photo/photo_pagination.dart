@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../home.dart';
 
-class TestPaginationScreen extends StatelessWidget{
-
-  Widget _buildPhotoScreen({BuildContext context, int index, Color color}) {
+class PhotoPaginationScreen extends StatelessWidget{
+  Widget _buildPhotoScreen(BuildContext context, int index, Color color) {
     return Column(
       children: [
         Stack(
@@ -32,7 +31,7 @@ class TestPaginationScreen extends StatelessWidget{
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return PhotoFullScreen();
+                        return PhotoFullScreen(index);
                       }),
                     );
                   }
@@ -122,13 +121,13 @@ class TestPaginationScreen extends StatelessWidget{
     );
   }
 
-  Widget _buildPhotoScreenView() {
+  Widget _buildPhotoScreenView(BuildContext context) {
     return PageView(
       children: [
-        _buildPhotoScreen(index: 1, color: Colors.blue),
-        _buildPhotoScreen(index: 2, color: Colors.red),
-        _buildPhotoScreen(index: 3, color: Colors.green),
-        _buildPhotoScreen(index: 4, color: Colors.yellow),
+        _buildPhotoScreen(context, 1, Colors.blue),
+        _buildPhotoScreen(context, 2, Colors.red),
+        _buildPhotoScreen(context, 3, Colors.green),
+        _buildPhotoScreen(context, 4, Colors.yellow),
       ],
     );
   }
@@ -136,10 +135,7 @@ class TestPaginationScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Photo'),
-      // ),
-      body: _buildPhotoScreenView()
+      body: _buildPhotoScreenView(context)
     );
   }
 }

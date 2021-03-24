@@ -1,7 +1,10 @@
-import 'file:///C:/src/projet-flutter/projetSimplon_partageAlbum/albums_sharing_app/lib/views/Photo/photo_screen.dart';
+import './photo_pagination.dart';
 import 'package:flutter/material.dart';
 
 class PhotoFullScreen extends StatelessWidget {
+  final index;
+
+  PhotoFullScreen(this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class PhotoFullScreen extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/test-1.jpg"),
+                  image: AssetImage("assets/test-$index.jpg"),
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -31,7 +34,7 @@ class PhotoFullScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return PhotoScreen();
+                        return PhotoPaginationScreen();
                       }),
                     );
                   }
