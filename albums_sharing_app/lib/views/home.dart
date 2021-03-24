@@ -33,6 +33,17 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
+            ElevatedButton(
+              child: Text('TestRequest'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return TestScreen();
+                  }),
+                );
+              },
+            ),
           ],
         ),
       ),

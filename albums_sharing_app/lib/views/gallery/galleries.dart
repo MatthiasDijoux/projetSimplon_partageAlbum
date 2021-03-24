@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import './gallery.dart';
 
@@ -10,20 +11,33 @@ class GalleriesScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
           child: (Column(
-        children: [_buildCard(context)],
+        children: [BuildCard()],
       ))),
     );
   }
 }
 
-Widget _buildCard(context) => GestureDetector(
+class BuildCard extends StatefulWidget {
+  @override
+  BuildCardState createState() {
+    return new BuildCardState();
+  }
+}
+
+class BuildCardState extends State<BuildCard> {
+  String serverResponse = 'Server response';
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) {
-            return GalleryScreen();
-          }),
-        );
+        _makeGetRequest();
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) {
+        //     return GalleryScreen();
+        //   }),
+        // );
       },
       child: Card(
         elevation: 5,
@@ -35,11 +49,11 @@ Widget _buildCard(context) => GestureDetector(
                 Padding(
                   padding: EdgeInsets.all(16.0),
                   child: Text(
-                    'Titre Album',
+                    serverResponse,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Spacer(), // I just added one line
+                Spacer(),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(Icons.share_rounded),
@@ -56,3 +70,16 @@ Widget _buildCard(context) => GestureDetector(
         ),
       ),
     );
+  }
+
+   _makeGetRequest() async {
+    Response response = await get(_localhost());
+    setState(() {
+      serverResponse = response.body;
+    });
+  }
+
+  Uri _localhost() {
+      return Uri.http('10.0.2.2:3000','/api/albums');
+  }
+}

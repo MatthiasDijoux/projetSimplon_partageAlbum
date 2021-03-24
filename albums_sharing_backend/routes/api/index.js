@@ -5,13 +5,16 @@ const uuid = require('uuid');
 const jwt = require('jsonwebtoken');
 const userController = require("../../controllers/userController.js");
 const authController = require("../../controllers/authControler");
-const {checkTokenMiddleware, extractBearerToken} = require("../../middlewares/authMiddlewares")
-const {checkDuplicateEmail} = require('../../middlewares/verifSignup')
-
+const { checkTokenMiddleware, extractBearerToken } = require("../../middlewares/authMiddlewares")
+const { checkDuplicateEmail } = require('../../middlewares/verifSignup')
+const albumController = require("../../controllers/albumController.js");
 /* Formulaire de connexion */
 router.post('/login', authController.login)
 /*  Inscription */
 router.post('/register', checkDuplicateEmail, userController.create)
+
+/*Route get on album*/
+router.get('/albums', albumController.findAll)
 
 /*** Début Route protégé ***/
 // router.get('/secret-route', checkTokenMiddleware, (req, res) => {
