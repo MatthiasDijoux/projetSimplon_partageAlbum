@@ -16,7 +16,7 @@ class TestPaginationScreen extends StatelessWidget{
               width: 500,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/test.jpg"),
+                  image: AssetImage("assets/test-$index.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),

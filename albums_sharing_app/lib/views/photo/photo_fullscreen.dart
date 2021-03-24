@@ -15,7 +15,7 @@ class PhotoFullScreen extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/test.jpg"),
+                  image: AssetImage("assets/test-1.jpg"),
                   fit: BoxFit.fitWidth,
                 ),
               ),

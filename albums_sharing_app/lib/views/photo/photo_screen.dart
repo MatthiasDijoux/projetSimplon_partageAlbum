@@ -18,7 +18,7 @@ class PhotoScreen extends StatelessWidget {
                 width: 500,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/test.jpg"),
+                    image: AssetImage("assets/test-1.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),

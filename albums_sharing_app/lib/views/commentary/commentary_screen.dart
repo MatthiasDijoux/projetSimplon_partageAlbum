@@ -9,14 +9,30 @@ class CommentariesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: commentary
-          .map(
-              (element) => Card(
+        .map(
+          (element) => Container(
+            margin: EdgeInsets.all(8),
             child: Column(
               children: <Widget>[
-                Text(element)
+                Row(
+                  children: [
+                    Text(
+                      'Nom de l\'utilsateur',
+                      style: TextStyle(fontSize: 14.0),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      element,
+                      style: TextStyle(fontSize: 12.0),
+                    )
+                  ],
+                ),
               ],
             ),
-          )
+          ),
       ).toList(),
     );
   }

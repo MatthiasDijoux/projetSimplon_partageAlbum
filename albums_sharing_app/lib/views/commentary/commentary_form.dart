@@ -17,7 +17,7 @@ class CommentaryFormScreenState extends State<CommentaryFormScreen> {
   Widget _buildCommentary() {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: "Commentaire"
+        labelText: "Ajouter un commentaire..."
       ),
       // ignore: missing_return
       validator: (String value) {
@@ -31,7 +31,6 @@ class CommentaryFormScreenState extends State<CommentaryFormScreen> {
           return;
         }
         _commentaryKey.currentState.save();
-        print(_commentary);
       },
     );
   }
