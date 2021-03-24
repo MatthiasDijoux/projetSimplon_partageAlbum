@@ -1,3 +1,5 @@
+import 'package:albums_sharing_app/views/home.dart';
+import 'package:albums_sharing_app/views/photo_fullscreen.dart';
 import 'package:flutter/material.dart';
 
 class PhotoScreen extends StatelessWidget {
@@ -28,7 +30,14 @@ class PhotoScreen extends StatelessWidget {
                 child: IconButton(
                     color: Colors.white,
                     icon: Icon(Icons.fullscreen),
-                    onPressed: () {}
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return PhotoFullScreen();
+                        }),
+                      );
+                    }
                 ),
               ),
               Positioned(
@@ -37,7 +46,14 @@ class PhotoScreen extends StatelessWidget {
                 child: IconButton(
                     color: Colors.white,
                     icon: Icon(Icons.arrow_back),
-                    onPressed: () {}
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return HomeScreen();
+                        }),
+                      );
+                    }
                 ),
               ),
             ],

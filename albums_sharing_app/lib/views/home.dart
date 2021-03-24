@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './login.dart';
-import './photo.dart';
+import './photo_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
