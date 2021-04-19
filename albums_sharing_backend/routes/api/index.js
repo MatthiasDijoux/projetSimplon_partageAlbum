@@ -3,6 +3,7 @@ let router = express.Router();
 const userController = require("../../controllers/userController.js");
 const authController = require("../../controllers/authControler");
 const albumController = require("../../controllers/albumController.js");
+const photoController = require("../../controllers/photoController.js");
 const {checkTokenMiddleware} = require("../../middlewares/authMiddlewares")
 const {checkDuplicateEmail} = require('../../middlewares/verifSignup')
 const multer = require('multer');
@@ -34,6 +35,12 @@ router.post('/register', checkDuplicateEmail, userController.create)
 
 /*Route get on album*/
 router.get('/albums', albumController.findAll)
+
+/*** Route get on all photos ***/
+router.get('/photos', photoController.findAll)
+
+/*** Route get on all photos ***/
+router.get('/photos/:idPhoto', photoController.findAll)
 
 /*** Début Route protégé ***/
 // router.get('/secret-route', checkTokenMiddleware, (req, res) => {
@@ -75,6 +82,8 @@ router.post('/upload', (req, res) => {
         else if (err) {
             return res.send(err);
         }
+
+        const photo = req.params.file;
 
         // Display uploaded image for user validation
         res.send(`your image has been uploaded!`);
