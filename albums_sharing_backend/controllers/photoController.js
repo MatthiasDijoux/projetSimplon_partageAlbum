@@ -14,6 +14,19 @@ exports.findAll = (req, res) => {
         });
 };
 
+exports.findOne = (req, res) => {
+    Photo.findOne()
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving User."
+            });
+        });
+};
+
 // Create and Save a new User
 exports.create = async (req, res) => {
 
@@ -27,14 +40,14 @@ exports.create = async (req, res) => {
 
     // Create a User
     const photo = {
-        nom: req.file.name,
+        nom: req.file.filename,
         source: req.file.path
     };
 
     // Save user in the database
     Photo.create(photo)
         .then(data => {
-            // res.send(data);
+            res.send(data);
 
             const dataToSend = {nom: photo.nom, source: photo.source}
 

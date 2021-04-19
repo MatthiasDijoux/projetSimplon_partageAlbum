@@ -14,9 +14,9 @@ module.exports = {
      * }], {});
     */
      return await queryInterface.bulkInsert('photos', [
-      {nom: '/pictures/food2.jpg', albumId: '1', source: 'food2.jpg', createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
-      {nom: '/pictures/food1.jpeg', albumId: '2', source: 'food1.jpeg', createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
-      {nom: '/pictures/food2.jpg', albumId: '2', source: 'food2.jpg', createdAt:  moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s")}
+      {nom: 'food2', source: 'food2.jpg', createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
+      {nom: 'food1', source: 'food1.jpeg', createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
+      {nom: 'food2', source: 'food2.jpg', createdAt:  moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s")}
     ], {});
   },
 

@@ -1,14 +1,17 @@
-
 module.exports = (sequelize, Sequelize) => {
-    const Photo = sequelize.define("photos", {
-      nom: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      source: {
-        type: Sequelize.STRING,
-        allowNull: false
-      }
+    return sequelize.define("photos", {
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        nom: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        source: {
+            type: Sequelize.STRING,
+            allowNull: false
+        }
     });
-    return Photo;
   };

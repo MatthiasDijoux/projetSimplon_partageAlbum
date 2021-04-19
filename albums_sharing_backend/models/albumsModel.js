@@ -8,4 +8,5 @@ module.exports = (sequelize, Sequelize) => {
     });
     return Album;
   };
+
   

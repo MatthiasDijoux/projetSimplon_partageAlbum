@@ -47,7 +47,7 @@ db.access.belongsTo(db.user);
 db.notification.belongsTo(db.user);
 db.comment.belongsTo(db.user);
 db.comment.belongsTo(db.album);
-db.photo.belongsTo(db.album);
+// db.photo.belongsTo(db.album);
 db.access_with_mail.belongsTo(db.album);
 db.access.belongsTo(db.album);
 

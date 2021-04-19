@@ -14,8 +14,8 @@ module.exports = {
      * }], {});
     */
      return await queryInterface.bulkInsert('albums', [
-      {id: 1, name: 'Album 1', userId: '1',  createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
-      {id: 2, name: 'Album 2', userId: '1', createdAt:  moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s")}
+      {id: 1, name: 'Album 1'},
+      {id: 2, name: 'Album 2'}
     ], {});
   },
 

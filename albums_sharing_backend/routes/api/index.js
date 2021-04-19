@@ -36,12 +36,6 @@ router.post('/register', checkDuplicateEmail, userController.create)
 /*Route get on album*/
 router.get('/albums', albumController.findAll)
 
-/*** Route get on all photos ***/
-router.get('/photos', photoController.findAll)
-
-/*** Route get on all photos ***/
-router.get('/photos/:idPhoto', photoController.findAll)
-
 /*** Début Route protégé ***/
 // router.get('/secret-route', checkTokenMiddleware, (req, res) => {
 // //   // Récupération du token
@@ -83,12 +77,17 @@ router.post('/upload', (req, res) => {
             return res.send(err);
         }
 
-        const photo = req.params.file;
+        console.log(req.file.filename)
+
+        photoController.create(req, res).then(r => console.log(r));
 
         // Display uploaded image for user validation
         res.send(`your image has been uploaded!`);
     });
 });
+
+/*** Route get on all photos ***/
+router.get('/photos', photoController.findAll)
 
 const imageFilter = function(req, file, cb) {
     // Accept images only

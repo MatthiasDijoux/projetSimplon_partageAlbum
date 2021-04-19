@@ -1,7 +1,7 @@
 
 require('dotenv').config();
 
-const PORT = process.env.API_PORT || 3000;
+const PORT = process.env.API_PORT || 4000;
 const ADDRESS = process.env.API_ADDRESS || '127.0.0.1';
 
 const ressourcePath = `http://${ADDRESS}:${PORT}/files/`;
