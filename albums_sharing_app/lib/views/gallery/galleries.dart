@@ -85,7 +85,10 @@ class BuildCardState extends State<BuildCard> {
                   icon: Icon(Icons.share_rounded),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    print('salut');
+                    simplePopup();
+                  },
                   icon: Icon(Icons.more_vert),
                 ),
               ],
@@ -98,6 +101,26 @@ class BuildCardState extends State<BuildCard> {
     return widgets;
   }
 
+  Widget simplePopup() => PopupMenuButton<String>(
+        icon: Icon(
+          Icons.more_vert,
+          color: Colors.white,
+        ),
+        itemBuilder: (context) => [
+          PopupMenuItem(
+            value: "edit",
+            child: Text("Edit"),
+          ),
+          PopupMenuItem(
+            value: "autres",
+            child: Text("Autres"),
+          ),
+        ],
+        onCanceled: () {
+          print("You have canceled the menu.");
+        },
+        onSelected: (value) {},
+      );
   _makeGetRequest() async {
     final response = await get(_localhost());
     return jsonDecode(response.body);
