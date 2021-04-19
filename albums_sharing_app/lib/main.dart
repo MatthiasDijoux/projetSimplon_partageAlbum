@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 import './views/login/login_page.dart';
 
 void main() => runApp(MainApp());
@@ -15,7 +16,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: "Album Share App",
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: MainPage(),
     );
   }
 }
@@ -39,7 +40,17 @@ class _MainPageState extends State<MainPage> {
     sharedPreferences = await SharedPreferences.getInstance();
     if(sharedPreferences.getString("accessToken") == null) {
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginPage()), (Route<dynamic> route) => false);
+    } else{
+         final snackBar = SnackBar(
+                  content: Text('Vous vous êtes bien connectés !'),
+              );
+
+          // Find the ScaffoldMessenger in the widget tree
+          // and use it to show a SnackBar.
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+
+  
   }
 
   @override
@@ -52,6 +63,7 @@ class _MainPageState extends State<MainPage> {
             onPressed: () {
               sharedPreferences.clear();
               sharedPreferences.commit();
+             
               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginPage()), (Route<dynamic> route) => false);
             },
             child: Row(
@@ -65,7 +77,7 @@ class _MainPageState extends State<MainPage> {
       ),
 
       body: Center(
-           
+            
       )
     );
   }
