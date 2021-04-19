@@ -89,6 +89,12 @@ router.post('/upload', (req, res) => {
 /*** Route get on all photos ***/
 router.get('/photos', photoController.findAll)
 
+/*** Route get on one photo ***/
+router.get('/photo/:idPhoto', photoController.findOne)
+
+/*** Route delete on one photo ***/
+router.delete('/photo/:idPhoto', photoController.delete)
+
 const imageFilter = function(req, file, cb) {
     // Accept images only
     if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
@@ -97,6 +103,7 @@ const imageFilter = function(req, file, cb) {
     }
     cb(null, true);
 };
+
 exports.imageFilter = imageFilter;
 
 /***  Test POST ***/

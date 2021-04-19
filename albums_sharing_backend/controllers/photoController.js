@@ -15,14 +15,15 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    Photo.findOne()
+    const id = req.params.idPhoto;
+
+    Photo.findByPk(id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving User."
+                message: "Error retrieving Photo with id=" + id
             });
         });
 };
@@ -59,4 +60,32 @@ exports.create = async (req, res) => {
                     err.message || "Some error occurred while uploading the photo."
             });
         });
+};
+
+exports.findOne = (req, res) => {
+    const id = req.params.idPhoto;
+
+    Photo.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error retrieving Photo with id=" + id
+            });
+        });
+};
+
+exports.delete = (req, res) => {
+    const id = req.params.idPhoto;
+
+    Photo.destroy({
+        where: {
+            id: id
+        }
+    }).then(
+        res.status(200).send({
+            message: "Votre photo à bien été supprimé!"
+        })
+    );
 };
