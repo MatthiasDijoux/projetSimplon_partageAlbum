@@ -64,7 +64,6 @@ class BuildCardState extends State<BuildCard> {
   }
 
   List<Widget> prepareCardWidgets(List<dynamic> datas) {
-    //here you can do any processing you need as long as you return a list of ```Widget```.
     List<Widget> widgets = [];
     datas.forEach((item) {
       widgets.add(Card(

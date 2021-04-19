@@ -13,7 +13,9 @@ router.post('/register', checkDuplicateEmail, userController.create)
 
 /*Route get on album*/
 router.get('/albums', albumController.findAll)
-
+router.post('/album/create', albumController.create)
+router.post('/album/:id/delete',albumController.delete)
+router.post('/album/:id/update', albumController.update)
 /*** Début Route protégé ***/
 // router.get('/secret-route', checkTokenMiddleware, (req, res) => {
 // //   // Récupération du token
