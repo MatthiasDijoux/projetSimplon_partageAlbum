@@ -19,8 +19,8 @@ module.exports = {
     const hashedPassword2 = await bcrypt.hash("user2", 10)
 
     return await queryInterface.bulkInsert('users', [
-      {id: 1, email: 'user1@albumphotos.com', nom: 'BISHOP', prenom: 'WALTER', pseudo: "", isVerified: false, token_verif: "", password: hashedPassword1, createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
-      {id: 2, email: 'user2@albumphotos.com', nom: 'MORGAN', prenom: 'Dexter', pseudo: "", isVerified: false, token_verif: "", password: hashedPassword2,  createdAt:  moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s")}
+      {id: 1, email: 'user1@albumphotos.com', nom: 'BISHOP', prenom: 'WALTER', pseudo: "", isVerified: false, isActived: true, token_verif: "", password: hashedPassword1, createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
+      {id: 2, email: 'user2@albumphotos.com', nom: 'MORGAN', prenom: 'Dexter', pseudo: "", isVerified: false, isActived: true, token_verif: "", password: hashedPassword2,  createdAt:  moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s")}
     ], {});
   },
 
