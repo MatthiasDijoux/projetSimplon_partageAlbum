@@ -32,6 +32,11 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: true,
         defaultValue: ""
       },
+      isActived: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+        defaultValue: false
+      },
     });
     return User;
   };
