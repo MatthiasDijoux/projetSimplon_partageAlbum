@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login/login_page.dart';
-import 'gallery/galleries.dart';
+import 'gallery/albums.dart';
 import 'photo/photo_pagination.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return GalleriesScreen();
+                    return Albums();
                   }),
                 );
               },

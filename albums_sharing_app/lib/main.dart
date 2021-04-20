@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:albums_sharing_app/views/profile.dart';
 
 import './views/login/login_page.dart';
 
@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: "Album Share App",
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: HomeScreen(),
     );
   }
 }
@@ -57,7 +57,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Authentication System", style: TextStyle(color: Colors.white)),
+        title: Text("Accueil", style: TextStyle(color: Colors.white)),
         actions: <Widget>[
           FlatButton(
             onPressed: () {
@@ -69,7 +69,7 @@ class _MainPageState extends State<MainPage> {
             child: Row(
               children: [
                 Icon(Icons.open_in_new),
-                Text('Logout')
+                Text('Déconnexion')
               ],
             ),
           )
@@ -77,9 +77,22 @@ class _MainPageState extends State<MainPage> {
       ),
 
       body: Center(
-            
+          child: Column(
+          children: [
+            ElevatedButton(
+              child: Text('Mon Profil'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return UserProfileScreen();
+                  }),
+                );
+              },
+            ),
+          ]
       )
-    );
+    ));
   }
 }
 
