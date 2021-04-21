@@ -91,3 +91,19 @@ exports.update = (req, res) => {
             });
         });
 };
+exports.findOne = (req, res) => {
+    const id = req.params.id;
+    Album.findOne({
+        where: { id: id }
+    }).then(album => {
+        res.send({
+            message: album
+
+        });
+    })
+        .catch(err => {
+            res.status(500).send({
+                message: "Impossible de récupérer cet album"+err
+            });
+        });
+};

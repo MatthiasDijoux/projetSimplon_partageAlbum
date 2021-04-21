@@ -13,9 +13,9 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     return await queryInterface.bulkInsert('albums', [
-      {id: 1, name: 'Album 1', userId: '1',  createdAt:  moment().format("YYYY-MM-DD H:m:s"),  updatedAt: moment().format("YYYY-MM-DD H:m:s")},
-      {id: 2, name: 'Album 2', userId: '1', createdAt:  moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s")}
+    return await queryInterface.bulkInsert('albums', [
+      { id: 1, name: 'Album 1', userId: '1', photoId: '1', createdAt: moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s") },
+      { id: 2, name: 'Album 2', userId: '1', photoId: '1', createdAt: moment().format("YYYY-MM-DD H:m:s"), updatedAt: moment().format("YYYY-MM-DD H:m:s") }
     ], {});
   },
 
@@ -26,6 +26,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     return queryInterface.bulkDelete('albums', null, {});
+    return queryInterface.bulkDelete('albums', null, {});
   }
 };

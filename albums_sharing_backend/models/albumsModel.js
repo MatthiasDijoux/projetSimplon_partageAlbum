@@ -9,11 +9,11 @@ module.exports = (sequelize, Sequelize) => {
     userId: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: {
-        model: User,
-        key: 'id',
-      }
     },
+    photoId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    }
   });
   return Album;
 };

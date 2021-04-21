@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import './editGallery.dart';
 import './gallery.dart';
-import '../../models/albums_models.dart';
 
 class GalleriesScreen extends StatelessWidget {
   final List galleries = const [];
@@ -49,10 +49,6 @@ class BuildCardState extends State<BuildCard> {
                 child: Column(children: prepareCardWidgets(res.data)));
           }),
       onTap: () {
-        _makeGetRequest().then((response) {
-          print(response);
-          _serverResponse = response;
-        });
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) {
@@ -84,13 +80,7 @@ class BuildCardState extends State<BuildCard> {
                   onPressed: () {},
                   icon: Icon(Icons.share_rounded),
                 ),
-                IconButton(
-                  onPressed: () {
-                    print('salut');
-                    simplePopup();
-                  },
-                  icon: Icon(Icons.more_vert),
-                ),
+                simplePopup(item)
               ],
             ),
             Image.network(
@@ -101,15 +91,27 @@ class BuildCardState extends State<BuildCard> {
     return widgets;
   }
 
-  Widget simplePopup() => PopupMenuButton<String>(
+  Widget simplePopup(album) => PopupMenuButton(
         icon: Icon(
           Icons.more_vert,
-          color: Colors.white,
         ),
         itemBuilder: (context) => [
           PopupMenuItem(
-            value: "edit",
-            child: Text("Edit"),
+            value: album,
+            child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return EditGalleryScreen();
+                        },
+                        settings: RouteSettings(
+                          arguments: {},
+                        ),
+                      ));
+                },
+                child: Text("Modifier")),
           ),
           PopupMenuItem(
             value: "autres",
@@ -121,6 +123,7 @@ class BuildCardState extends State<BuildCard> {
         },
         onSelected: (value) {},
       );
+
   _makeGetRequest() async {
     final response = await get(_localhost());
     return jsonDecode(response.body);

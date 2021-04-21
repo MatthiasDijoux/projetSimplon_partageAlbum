@@ -3,8 +3,9 @@ let router = express.Router();
 const userController = require("../../controllers/userController.js");
 const authController = require("../../controllers/authControler");
 const albumController = require("../../controllers/albumController.js");
-const {checkTokenMiddleware} = require("../../middlewares/authMiddlewares")
-const {checkDuplicateEmail} = require('../../middlewares/verifSignup')
+const photoController = require("../../controllers/photoController.js");
+const { checkTokenMiddleware } = require("../../middlewares/authMiddlewares")
+const { checkDuplicateEmail } = require('../../middlewares/verifSignup')
 
 /* Formulaire de connexion */
 router.post('/login', authController.login)
@@ -13,9 +14,14 @@ router.post('/register', checkDuplicateEmail, userController.create)
 
 /*Route get on album*/
 router.get('/albums', albumController.findAll)
+router.get('/album/:id', albumController.findOne)
 router.post('/album/create', albumController.create)
-router.post('/album/:id/delete',albumController.delete)
+router.post('/album/:id/delete', albumController.delete)
 router.post('/album/:id/update', albumController.update)
+
+/*Routes photos*/
+router.get('/photos', photoController.findAll);
+
 /*** Début Route protégé ***/
 // router.get('/secret-route', checkTokenMiddleware, (req, res) => {
 // //   // Récupération du token

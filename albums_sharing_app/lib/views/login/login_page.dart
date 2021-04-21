@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:albums_sharing_app/views/login/register_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import '../home.dart';
 import '../../main.dart';
 
 class LoginPage extends StatefulWidget {
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
         });
         sharedPreferences.setString("accessToken", jsonResponse['accessToken']);
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (BuildContext context) => MainPage()),
+            MaterialPageRoute(builder: (BuildContext context) => HomeScreen()),
             (Route<dynamic> route) => false);
       }
     } else {
